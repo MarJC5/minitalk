@@ -6,8 +6,15 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:38:39 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/01 16:39:16 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/02 09:10:14 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+int	main(int argc, char **argv)
+{
+	(void) argc;
+	(void) argv;
+	return (0);
+}
