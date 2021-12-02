@@ -4,10 +4,17 @@ RED 	= \033[1;31m
 ORANGE	= \033[1;33m
 RESET	= \033[0m
 
-CC		=	gcc
+CC		=	cc
 FLAGS	=	-Wall -Wextra -Werror
 
 RM		=	rm -rf
+
+FOLDER	=	src/
+FILES	=	server.c \
+			client.c \
+			utils.c
+
+UTILS	= 	$(addprefix $(FOLDER), utils.c)
 
 SRV		=	server
 SRVF	=	$(addprefix $(FOLDER), server.c)
@@ -15,16 +22,12 @@ SRVF	=	$(addprefix $(FOLDER), server.c)
 CLI		=	client
 CLIF	=	$(addprefix $(FOLDER), client.c)
 
-FOLDER	=	src/
-FILES	=	server.c \
-			client.c \
-			utils.c
 SRC 	=	$(addprefix $(FOLDER), $(FILES))
 OBJ 	=	$(SRC:.c=.o)
 
 all: $(SERVER) $(CLIENT)
-	@$(CC) $(FLAGS) -o $(SRV) $(SRVF)
-	@$(CC) $(FLAGS) -o $(CLI) $(CLIF)
+	@$(CC) $(FLAGS) -o $(SRV) $(SRVF) $(UTILS)
+	@$(CC) $(FLAGS) -o $(CLI) $(CLIF) $(UTILS)
 	@echo "[$(GREEN)created$(RESET)]: Server & Client executable"
 
 clean:
