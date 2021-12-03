@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:38:39 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/02 22:19:52 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/03 15:22:44 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	sig_message(pid_t pid, char *msg)
 			kill(pid, SIGUSR1);
 		else if (ctob(msg[i]) == 1)
 			kill(pid, SIGUSR2);
-		usleep(100);
 	}
 }
 
@@ -33,16 +32,12 @@ int	main(int argc, char **argv)
 	char	*msg;
 
 	if (argc != 3)
-	{
 		printf("Enter the server PID & a message.\n");
-		return (0);
-	}
-	pid = ft_atoi(argv[1]);
-	msg = argv[2];
-	while (1)
+	else
 	{
+		pid = ft_atoi(argv[1]);
+		msg = argv[2];
 		sig_message(pid, msg);
-		pause();
 	}
 	return (0);
 }
