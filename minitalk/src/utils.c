@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 17:30:20 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/02 22:07:44 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/07 13:44:58 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_atoi(const char *str)
 	return (sign * num);
 }
 
-int	ctob(char c)
+int	ctob(char c, pid_t pid)
 {
 	int	i;
 
@@ -45,9 +45,9 @@ int	ctob(char c)
 	while(i-- > 0)
 	{
 		if (c & (1 << i))
-			return (1);
+			kill(pid, SIGUSR2);
 		else
-			return (0);
+			kill(pid, SIGUSR1);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:39:42 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/02 22:07:53 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/07 13:42:25 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include <signal.h>
 
 int		ft_atoi(const char *str);
-int		ctob(char c);
+int		ctob(char c, pid_t pid);
 
 #endif
