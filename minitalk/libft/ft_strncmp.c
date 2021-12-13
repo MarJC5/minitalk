@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 14:16:34 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/13 14:26:52 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/13 09:27:36 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/14 14:24:48 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void	sig_handler(int sig)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		c;
-	int		bitshift;
+	size_t	i;
 
-	c = 0;
-	bitshift = 0;
-	while (sig == SIGUSR1)
-	while (sig == SIGUSR2)
-	bitshift++;
-	if (bitshift == 8)
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (--n && s1[i] && s2[i])
 	{
-		ft_printf("%d", c);
-		c = 0;
-		bitshift = 0;
+		if (s1[i] != s2[i])
+			break ;
+		i++;
 	}
-}
-
-int	main(void)
-{
-	ft_printf("Server PID: \033[1;32m%d\033[0m\n", getpid());
-	signal(SIGUSR1, sig_handler);
-	signal(SIGUSR2, sig_handler);
-	while (1)
-		pause();
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

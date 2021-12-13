@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 14:16:34 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/13 14:26:52 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/15 10:16:21 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/15 10:25:26 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void	sig_handler(int sig)
+char	*ft_strdup(const char *str)
 {
-	int		c;
-	int		bitshift;
+	char	*copy;
 
-	c = 0;
-	bitshift = 0;
-	while (sig == SIGUSR1)
-	while (sig == SIGUSR2)
-	bitshift++;
-	if (bitshift == 8)
-	{
-		ft_printf("%d", c);
-		c = 0;
-		bitshift = 0;
-	}
-}
-
-int	main(void)
-{
-	ft_printf("Server PID: \033[1;32m%d\033[0m\n", getpid());
-	signal(SIGUSR1, sig_handler);
-	signal(SIGUSR2, sig_handler);
-	while (1)
-		pause();
-	return (0);
+	copy = malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!copy)
+		return (NULL);
+	ft_memcpy(copy, str, ft_strlen(str) + 1);
+	return (copy);
 }

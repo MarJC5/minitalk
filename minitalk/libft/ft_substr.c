@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 14:16:34 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/13 14:26:52 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/19 18:17:20 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/22 15:12:49 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void	sig_handler(int sig)
+char	*ft_substr(const char *str, unsigned int start, size_t len)
 {
-	int		c;
-	int		bitshift;
+	size_t	i;
+	char	*s;
 
-	c = 0;
-	bitshift = 0;
-	while (sig == SIGUSR1)
-	while (sig == SIGUSR2)
-	bitshift++;
-	if (bitshift == 8)
-	{
-		ft_printf("%d", c);
-		c = 0;
-		bitshift = 0;
-	}
-}
-
-int	main(void)
-{
-	ft_printf("Server PID: \033[1;32m%d\033[0m\n", getpid());
-	signal(SIGUSR1, sig_handler);
-	signal(SIGUSR2, sig_handler);
-	while (1)
-		pause();
-	return (0);
+	i = -1;
+	if (!str)
+		return (NULL);
+	if (len > ft_strlen(str))
+		len = ft_strlen(str);
+	s = malloc((len + 1) * sizeof(char));
+	if (!s)
+		return (NULL);
+	while (++i < len && start < ft_strlen(str))
+		s[i] = str[start++];
+	s[i] = '\0';
+	return (s);
 }

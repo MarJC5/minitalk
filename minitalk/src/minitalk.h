@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:39:42 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/07 13:42:25 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/13 10:24:50 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <signal.h>
-
-int		ft_atoi(const char *str);
-int		ctob(char c, pid_t pid);
+# include "../libft/libft.h"
+# include "../ft_printf/ft_printf.h"
 
 #endif

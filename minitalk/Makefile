@@ -11,8 +11,10 @@ RM		=	rm -rf
 
 FOLDER	=	src/
 FILES	=	server.c \
-			client.c \
-			utils.c
+			client.c
+
+LIBFT	= ./libft/libft.a
+PRINFT	= ./ft_printf/libftprintf.a
 
 UTILS	= 	$(addprefix $(FOLDER), utils.c)
 
@@ -26,18 +28,23 @@ SRC 	=	$(addprefix $(FOLDER), $(FILES))
 OBJ 	=	$(SRC:.c=.o)
 
 all: $(SERVER) $(CLIENT)
-	@$(CC) $(FLAGS) -o $(SRV) $(SRVF) $(UTILS)
-	@$(CC) $(FLAGS) -o $(CLI) $(CLIF) $(UTILS)
-	@echo "[$(GREEN)created$(RESET)]: Server & Client executable"
+	@$(MAKE) -C ./ft_printf
+	@$(CC) $(FLAGS) $(LIBFT) $(PRINFT) $(SRVF) -o $(SRV)
+	@$(CC) $(FLAGS) $(LIBFT) $(PRINFT) $(CLIF) -o $(CLI)
+	@echo "[$(GREEN)created$(RESET)]: libft.a, libftprintf.a, server & slient"
 
 clean:
+	@$(MAKE) -C ./ft_printf clean
+	@$(MAKE) -C ./libft clean
 	@$(RM) $(OBJ)
 	@echo "[$(RED)deleted$(RESET)]: *.o files"
 
 fclean: clean
+	@$(MAKE) -C ./ft_printf fclean
+	@$(MAKE) -C ./libft fclean
 	@$(RM) server
 	@$(RM) client
-	@echo "[$(RED)deleted$(RESET)]: Server & Client executable"
+	@echo "[$(RED)deleted$(RESET)]: libft.a, libftprintf.a, server & slient"
 
 re: fclean all
 

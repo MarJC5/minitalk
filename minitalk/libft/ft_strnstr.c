@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 14:16:34 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/13 14:26:52 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/15 11:00:29 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/21 12:00:59 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void	sig_handler(int sig)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int		c;
-	int		bitshift;
+	size_t	i;
+	size_t	j;
 
-	c = 0;
-	bitshift = 0;
-	while (sig == SIGUSR1)
-	while (sig == SIGUSR2)
-	bitshift++;
-	if (bitshift == 8)
+	i = 0;
+	if (ft_strlen(little) == 0)
+		return ((char *)big);
+	while (big[i] && i < len)
 	{
-		ft_printf("%d", c);
-		c = 0;
-		bitshift = 0;
+		j = 0;
+		while (little[j] && ((i + j) < len) && (big[i + j] == little[j]))
+			j++;
+		if (!little[j])
+			return ((char *)big + i);
+		i++;
 	}
-}
-
-int	main(void)
-{
-	ft_printf("Server PID: \033[1;32m%d\033[0m\n", getpid());
-	signal(SIGUSR1, sig_handler);
-	signal(SIGUSR2, sig_handler);
-	while (1)
-		pause();
-	return (0);
+	return (NULL);
 }

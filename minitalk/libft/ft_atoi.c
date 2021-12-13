@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 17:30:20 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/07 13:44:58 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/12 09:54:02 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/21 11:31:38 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
@@ -32,22 +32,7 @@ int	ft_atoi(const char *str)
 		sign = -1;
 	if (str[count] == '-' || str[count] == '+')
 		count++;
-	while (str[count] && (str[count] >= '0' && str[count] <= '9'))
+	while (str[count] && ft_isdigit(str[count]))
 		num = num * 10 + (str[count++] - '0');
 	return (sign * num);
-}
-
-int	ctob(char c, pid_t pid)
-{
-	int	i;
-
-	i = 8;
-	while(i-- > 0)
-	{
-		if (c & (1 << i))
-			kill(pid, SIGUSR2);
-		else
-			kill(pid, SIGUSR1);
-	}
-	return (0);
 }

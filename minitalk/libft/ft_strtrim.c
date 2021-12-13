@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 14:16:34 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/13 14:26:52 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/21 12:45:24 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/22 11:30:47 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void	sig_handler(int sig)
+static	int	ft_isset(char const *str, char c)
 {
-	int		c;
-	int		bitshift;
+	int	i;
 
-	c = 0;
-	bitshift = 0;
-	while (sig == SIGUSR1)
-	while (sig == SIGUSR2)
-	bitshift++;
-	if (bitshift == 8)
+	i = 0;
+	while (str[i])
 	{
-		ft_printf("%d", c);
-		c = 0;
-		bitshift = 0;
+		if (str[i] == c)
+			return (0);
+		i++;
 	}
+	return (1);
 }
 
-int	main(void)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	ft_printf("Server PID: \033[1;32m%d\033[0m\n", getpid());
-	signal(SIGUSR1, sig_handler);
-	signal(SIGUSR2, sig_handler);
-	while (1)
-		pause();
-	return (0);
+	size_t	i;
+	size_t	len;
+
+	if (!s1)
+		return (NULL);
+	i = 0;
+	len = ft_strlen(s1);
+	while (ft_isset(set, s1[i]) == 0)
+		i++;
+	while (ft_isset(set, s1[len - 1]) == 0)
+		len--;
+	return (ft_substr(s1, i, (len - i)));
 }

@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 14:16:34 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/13 14:26:52 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/14 15:54:44 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/22 14:55:31 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-void	sig_handler(int sig)
+size_t	ft_strlcat(char *dst, const char *src, size_t n)
 {
-	int		c;
-	int		bitshift;
+	size_t	i_dst;
+	size_t	i_src;
+	size_t	dst_len;
+	size_t	src_len;
 
-	c = 0;
-	bitshift = 0;
-	while (sig == SIGUSR1)
-	while (sig == SIGUSR2)
-	bitshift++;
-	if (bitshift == 8)
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	i_dst = dst_len;
+	i_src = 0;
+	if (n < dst_len)
+		return (src_len + n);
+	else if (n > dst_len)
 	{
-		ft_printf("%d", c);
-		c = 0;
-		bitshift = 0;
+		while (i_src < src_len && i_dst < (n - 1))
+			dst[i_dst++] = src[i_src++];
+		dst[i_dst] = '\0';
 	}
-}
-
-int	main(void)
-{
-	ft_printf("Server PID: \033[1;32m%d\033[0m\n", getpid());
-	signal(SIGUSR1, sig_handler);
-	signal(SIGUSR2, sig_handler);
-	while (1)
-		pause();
-	return (0);
+	return (dst_len + src_len);
 }
