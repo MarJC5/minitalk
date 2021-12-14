@@ -39,6 +39,18 @@ There is an example showing the use of ``SIGUSR1`` and ``SIGUSR2`` in [Signaling
 
 The default action is to terminate the process.
 
+## Bitwise operation
+
+This type of operator treats its operands as 32-bit binary data, rather than decimal, hexadecimal, or octal data.
+These operators process this data according to their binary representation
+but return standard numeric values in their original format.
+
+| Operator | Denomination | Effect | Syntax | Result |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+|`&` |	ET bit-by-bit  |	Returns 1 if the two bits of the same weight are at 1 |	9 & 12 (1001 & 1100) |	8 (1000)|
+|<code>&#124;</code> |	OU bit-by-bit  |	Returns 1 if either of the two equally significant bits is 1 (or both)  |	9 <code>&#124;</code> 12 (1001 <code>&#124;</code> 1100) |	13 (1101)|
+|`^` |	OU bit-by-bit exclusif |	Returns 1 if one of the two bits of equal weight is 1 (but not both)  |	9 ^ 12 (1001 ^ 1100) |	5 (0101)|
+
 ## Bonus
 
 - The server confirms every signal received by sending a signal to the client.

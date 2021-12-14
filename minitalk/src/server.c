@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 14:16:34 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/13 14:26:52 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/14 16:45:14 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 void	sig_handler(int sig)
 {
-	int		c;
-	int		bitshift;
+	static char	c;
+	static int	bitshift = 0;
 
-	c = 0;
-	bitshift = 0;
-	while (sig == SIGUSR1)
-	while (sig == SIGUSR2)
 	bitshift++;
 	if (bitshift == 8)
 	{
-		ft_printf("%d", c);
-		c = 0;
+		ft_printf("%c", c);
+		if (!c)
+			ft_printf("\n");
 		bitshift = 0;
+		c = 0;
 	}
 }
 
