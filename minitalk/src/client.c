@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:38:39 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/14 15:27:11 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/20 11:48:23 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ctob(char c, pid_t pid)
 		usleep(200);
 	}
 }
-
 
 void	sig_message(pid_t pid, char *msg)
 {
