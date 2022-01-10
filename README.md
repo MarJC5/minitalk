@@ -51,7 +51,46 @@ but return standard numeric values in their original format.
 |<code>&#124;</code> |	OU bit-by-bit  |	Returns 1 if either of the two equally significant bits is 1 (or both)  |	9 <code>&#124;</code> 12 (1001 <code>&#124;</code> 1100) |	13 (1101)|
 |`^` |	OU bit-by-bit exclusif |	Returns 1 if one of the two bits of equal weight is 1 (but not both)  |	9 ^ 12 (1001 ^ 1100) |	5 (0101)|
 
+### AND (&)
+
+```nano
+12 = 00001100 (In Binary)
+25 = 00011001 (In Binary)
+
+Bit Operation of 12 and 25
+  00001100
+& 00011001
+  ________
+  00001000  = 8 (In decimal)
+```
+
+### OR (|)
+
+```nano
+12 = 00001100 (In Binary)
+25 = 00011001 (In Binary)
+
+Bitwise OR Operation of 12 and 25
+  00001100
+| 00011001
+  ________
+  00011101  = 29 (In decimal)
+```
+
+### XOR
+
+```nano
+12 = 00001100 (In Binary)
+25 = 00011001 (In Binary)
+
+Bitwise XOR Operation of 12 and 25
+  00001100
+^ 00011001
+  ________
+  00010101  = 21 (In decimal)
+```
+
 ## Bonus
 
-- The server confirms every signal received by sending a signal to the client.
+- The server confirms every signal received by sending a signal to the client. (Not implemented)
 - Support Unicode characters!
